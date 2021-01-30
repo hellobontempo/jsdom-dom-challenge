@@ -17,25 +17,29 @@ function handlePlus(e) {counter.innerHTML ++ }
 
 function handleHeart(e){
     let second = counter.innerHTML
-    clicks = 0
-    //for each second, add clicks then restart loop
-        likes.innerHTML += `<li class="emoji">${second} has been liked <span>1</span> time</li>`
-        heart.onclick = ++clicks
-}
-
+    let likeList = document.getElementById(`${second}`)
+   
+    if (likeList === null){
+        likeList = document.createElement('li')
+        likes.appendChild(likeList)
+        likeList.id = `${second}`
+        num = 1
+        likeList.innerHTML = `${second} has been liked <span> ${num} </span> time`
+        let clickCount = document.querySelector('span').innerHTML
+    }
+    else {
+        likeList.innerHTML = `${second} has been liked <span> ${num++} </span> times`
+    }   
+}  
 
 pleaseWork = function handleTimer() {
     timer = setInterval(setTime, 1000) 
     function setTime() {
-        // ++seconds;
         ++counter.innerHTML;
     }
 }
 
 pleaseWork()
-
-//get buttons
-
 
 //add listener to click on buttons
 
@@ -61,3 +65,16 @@ button.addEventListener('click', event => {
     button.innerHTML =  'pause'
     }
 })
+
+ 
+const commentBox = document.getElementById("comment-form");
+const commentList = document.getElementById("list");
+
+commentBox.addEventListener('submit', handleSubmit)
+
+function handleSubmit(event) {
+  event.preventDefault();
+  const newComment = document.getElementById("comment-input").value;
+ commentList.innerHTML += `<p>${newComment}</p>`
+ event.target.reset()
+}
