@@ -25,7 +25,6 @@ function handleHeart(e){
         likeList.id = `${second}`
         num = 1
         likeList.innerHTML = `${second} has been liked <span> ${num} </span> time`
-        let clickCount = document.querySelector('span').innerHTML
     }
     else {
         likeList.innerHTML = `${second} has been liked <span> ${num++} </span> times`
@@ -33,10 +32,11 @@ function handleHeart(e){
 }  
 
 pleaseWork = function handleTimer() {
-    timer = setInterval(setTime, 1000) 
-    function setTime() {
-        ++counter.innerHTML;
-    }
+    timer = setInterval(function () {++counter.innerHTML}, 1000) 
+    // timer = setInterval(setTime, 1000) 
+    // function setTime() {
+    // {++counter.innerHTML};
+    // }
 }
 
 pleaseWork()
