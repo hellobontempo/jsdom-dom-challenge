@@ -6,6 +6,7 @@ const heart = document.getElementById('heart')
 const button = document.querySelectorAll('button')[3]
 const likes = document.getElementsByClassName("likes")[0]
 
+
 minus.addEventListener('click', handleMinus, true)
 plus.addEventListener('click', handlePlus, true)
 heart.addEventListener('click', handleHeart, true)
@@ -31,6 +32,7 @@ function handleHeart(e){
     }   
 }  
 
+
 pleaseWork = function handleTimer() {
     timer = setInterval(function () {++counter.innerHTML}, 1000) 
     // timer = setInterval(setTime, 1000) 
@@ -48,9 +50,12 @@ button.addEventListener('click', event => {
     //change button to resume
     //pause timer
     clearInterval(timer)
-    minus.removeEventListener('click', handleMinus, true)
-    plus.removeEventListener('click', handlePlus, true)
-    heart.removeEventListener('click', handleHeart, true)
+    minus.disabled = true
+    plus.disabled = true
+    heart.disabled = true
+    // minus.removeEventListener('click', handleMinus, true)
+    // plus.removeEventListener('click', handlePlus, true)
+    // heart.removeEventListener('click', handleHeart, true)
     button.id =  'resume'
     button.innerHTML =  'resume'
     }
@@ -58,9 +63,12 @@ button.addEventListener('click', event => {
     //resume timer
     //change text to 'pause'
     pleaseWork()
-    minus.addEventListener('click', handleMinus, true)
-    plus.addEventListener('click', handlePlus, true)
-    heart.addEventListener('click', handleHeart, true)
+    minus.disabled = false
+    plus.disabled = false
+    heart.disabled = false
+    // minus.addEventListener('click', handleMinus, true)
+    // plus.addEventListener('click', handlePlus, true)
+    // heart.addEventListener('click', handleHeart, true)
     button.id =  'pause'
     button.innerHTML =  'pause'
     }
